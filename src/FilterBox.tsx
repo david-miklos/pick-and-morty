@@ -47,7 +47,11 @@ const FilterBox = () => {
             >
               <option value={""}>Choose a status</option>
               {STATUSES.map((status) => {
-                return <option value={status}>{status}</option>;
+                return (
+                  <option value={status} key={status}>
+                    {status}
+                  </option>
+                );
               })}
             </select>
           </div>
@@ -93,12 +97,16 @@ const FilterBox = () => {
             >
               <option value={""}>Choose a gender</option>
               {GENDERS.map((gender) => {
-                return <option value={gender}>{gender}</option>;
+                return (
+                  <option value={gender} key={gender}>
+                    {gender}
+                  </option>
+                );
               })}
             </select>
           </div>
           <div className="flex flex-col items-center mt-5">
-            <button className="grey-button w-1/3">Search</button>
+            <button className="submit-button w-1/3">Search</button>
           </div>
         </div>
       </form>

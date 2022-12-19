@@ -1,11 +1,10 @@
 import FilterBox from "./FilterBox";
+import Header from "./Header";
 
 function App() {
   return (
     <div>
-      <h1 className="flex flex-col items-center h-full justify-center">
-        Pick and Morty
-      </h1>
+      <Header />
       <FilterBox />
     </div>
   );

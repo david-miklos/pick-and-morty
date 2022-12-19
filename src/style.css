@@ -6,13 +6,16 @@
   .grey-button {
     @apply bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded;
   }
+  .submit-button {
+    @apply bg-orange-400 hover:bg-orange-500  text-white font-bold py-2 px-4 rounded;
+  }
   .search-input {
-    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-blue-500 block w-full p-2.5;
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-orange-300 block w-full p-2.5;
   }
   .search-label {
     @apply block mb-1 text-sm font-medium text-gray-900 dark:text-white;
   }
   .search-select {
-    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-blue-500 block w-full p-2.5;
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-orange-300 block w-full p-2.5;
   }
 }
