@@ -1,6 +1,5 @@
 import { useState } from "react";
-const STATUSES = ["alive", "dead", "unknown"];
-const GENDERS = ["female", "male", "genderless", "unknown"];
+import { GENDERS, STATUSES } from "./interfaces";
 
 const FilterBox = () => {
   const [name, setName] = useState("");
