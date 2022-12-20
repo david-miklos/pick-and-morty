@@ -6,6 +6,14 @@ export const STATUSES = ["Alive", "Dead", "unknown"] as const;
 
 export const GENDERS = ["Male", "Female", "Genderless", "unknown"] as const;
 
+export interface IFilterObj {
+  name?: string;
+  status?: Status;
+  species?: string;
+  type?: string;
+  gender?: Gender;
+}
+
 export interface IResourceBase {
   id: number;
   name: string;

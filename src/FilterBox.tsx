@@ -1,20 +1,54 @@
-import { useState } from "react";
-import { GENDERS, STATUSES } from "./interfaces";
+import { useEffect, useState } from "react";
+import { getCharacters } from "rickmortyapi";
+// import Character from "./Character";
+// import Character from "./Character";
+import {
+  Gender,
+  GENDERS,
+  ICharacter,
+  IFilterObj,
+  Status,
+  STATUSES,
+} from "./interfaces";
+import Results from "./Results";
 
 const FilterBox = () => {
   const [name, setName] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("" as Status);
   const [species, setSpecies] = useState("");
   const [type, setType] = useState("");
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState("" as Gender);
+  const [characters, setCharacters] = useState([] as ICharacter[]);
+
+  // Request characters on first load of the page
+  useEffect(() => {
+    void requestCharacters();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  async function requestCharacters() {
+    const filter: IFilterObj = {};
+    if (name) filter.name = name;
+    if (status) filter.status = status;
+    if (species) filter.species = species;
+    if (type) filter.type = type;
+    if (gender) filter.gender = gender;
+
+    console.log(filter);
+    const res = await getCharacters(filter);
+    console.log(res);
+    const charactersInfo = res.data;
+    setCharacters(charactersInfo.results ?? []);
+  }
 
   return (
-    <div className="filter-box m-10">
+    <div className="filter-box m-10 grid gap-20 grid-cols-3">
       <form
-        className="w-1/3"
+        className="col-span-1"
         onSubmit={(e) => {
           e.preventDefault();
-          console.log(gender);
+          // Request characters on submit events
+          void requestCharacters();
         }}
       >
         <div className="grid gap-6 mb-6 md:grid-cols-1">
@@ -41,7 +75,7 @@ const FilterBox = () => {
               className="search-select"
               value={status}
               onChange={(e) => {
-                setStatus(e.target.value);
+                setStatus(e.target.value as Status);
               }}
             >
               <option value={""}>Choose a status</option>
@@ -91,7 +125,7 @@ const FilterBox = () => {
               className="search-select"
               value={gender}
               onChange={(e) => {
-                setGender(e.target.value);
+                setGender(e.target.value as Gender);
               }}
             >
               <option value={""}>Choose a gender</option>
@@ -109,6 +143,7 @@ const FilterBox = () => {
           </div>
         </div>
       </form>
+      <Results results={characters} />
     </div>
   );
 };
