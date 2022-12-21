@@ -1,16 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import fetchCharacters from "./fetchCharacters";
-import { Gender, GENDERS, IFilterObj, Status, STATUSES } from "./interfaces";
+import { GENDERS, IFilterObj, STATUSES } from "./interfaces";
 import Loader from "./Loader";
 import Results from "./Results";
 
 const FilterBox = () => {
-  const [name, setName] = useState("");
-  const [status, setStatus] = useState("" as Status);
-  const [species, setSpecies] = useState("");
-  const [type, setType] = useState("");
-  const [gender, setGender] = useState("" as Gender);
+  // const [name, setName] = useState("");
+  // const [status, setStatus] = useState("" as Status);
+  // const [species, setSpecies] = useState("");
+  // const [type, setType] = useState("");
+  // const [gender, setGender] = useState("" as Gender);
   const [filter, setFilter] = useState({} as IFilterObj);
 
   // React Query
@@ -20,7 +20,6 @@ const FilterBox = () => {
     return <Loader />;
   }
 
-  console.log(results);
   const characters = results.data?.data.results ?? [];
 
   return (
@@ -29,15 +28,11 @@ const FilterBox = () => {
         className="col-span-1"
         onSubmit={(e) => {
           e.preventDefault();
-          // Request characters on submit events
-          // void requestCharacters();
-          const filter: IFilterObj = {};
-          if (name) filter.name = name;
-          if (status) filter.status = status;
-          if (species) filter.species = species;
-          if (type) filter.type = type;
-          if (gender) filter.gender = gender;
-          setFilter(filter);
+          // Getting the data from the from
+          const formData = new FormData(e.currentTarget);
+          const filterObj = Object.fromEntries(formData.entries());
+
+          setFilter(filterObj);
         }}
       >
         <div className="grid gap-6 mb-6 md:grid-cols-1">
@@ -49,24 +44,15 @@ const FilterBox = () => {
               className="search-input"
               type="text"
               id="name"
-              name="Name"
-              value={name}
+              name="name"
               placeholder="Name"
-              onChange={(e) => setName(e.target.value)}
             />
           </div>
           <div className="status">
             <label htmlFor="status" className="search-label">
               Status
             </label>
-            <select
-              id="status"
-              className="search-select"
-              value={status}
-              onChange={(e) => {
-                setStatus(e.target.value as Status);
-              }}
-            >
+            <select id="status" className="search-select" name="status">
               <option value={""}>Choose a status</option>
               {STATUSES.map((status) => {
                 return (
@@ -85,10 +71,8 @@ const FilterBox = () => {
               className="search-input"
               type="text"
               id="species"
-              name="Species"
-              value={species}
+              name="species"
               placeholder="Species"
-              onChange={(e) => setSpecies(e.target.value)}
             />
           </div>
           <div className="type">
@@ -99,24 +83,15 @@ const FilterBox = () => {
               className="search-input"
               type="text"
               id="type"
-              name="Type"
-              value={type}
+              name="type"
               placeholder="Type"
-              onChange={(e) => setType(e.target.value)}
             />
           </div>
           <div className="gender">
             <label htmlFor="gender" className="search-label">
               Gender
             </label>
-            <select
-              id="gender"
-              className="search-select"
-              value={gender}
-              onChange={(e) => {
-                setGender(e.target.value as Gender);
-              }}
-            >
+            <select id="gender" className="search-select" name="gender">
               <option value={""}>Choose a gender</option>
               {GENDERS.map((gender) => {
                 return (

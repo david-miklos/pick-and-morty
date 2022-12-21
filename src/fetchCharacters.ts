@@ -9,7 +9,6 @@ const fetchCharacters: QueryFunction<
 > = async ({ queryKey }) => {
   const filter = queryKey[1];
   const res = await getCharacters(filter);
-  console.log(res);
 
   if (res.status === 404) {
     throw new Error(`no characters found`);
