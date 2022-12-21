@@ -1,15 +1,8 @@
-import { useEffect, useState } from "react";
-import { getCharacters } from "rickmortyapi";
-// import Character from "./Character";
-// import Character from "./Character";
-import {
-  Gender,
-  GENDERS,
-  ICharacter,
-  IFilterObj,
-  Status,
-  STATUSES,
-} from "./interfaces";
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import fetchCharacters from "./fetchCharacters";
+import { Gender, GENDERS, IFilterObj, Status, STATUSES } from "./interfaces";
+import Loader from "./Loader";
 import Results from "./Results";
 
 const FilterBox = () => {
@@ -18,28 +11,17 @@ const FilterBox = () => {
   const [species, setSpecies] = useState("");
   const [type, setType] = useState("");
   const [gender, setGender] = useState("" as Gender);
-  const [characters, setCharacters] = useState([] as ICharacter[]);
+  const [filter, setFilter] = useState({} as IFilterObj);
 
-  // Request characters on first load of the page
-  useEffect(() => {
-    void requestCharacters();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // React Query
+  const results = useQuery(["search", filter], fetchCharacters);
 
-  async function requestCharacters() {
-    const filter: IFilterObj = {};
-    if (name) filter.name = name;
-    if (status) filter.status = status;
-    if (species) filter.species = species;
-    if (type) filter.type = type;
-    if (gender) filter.gender = gender;
-
-    console.log(filter);
-    const res = await getCharacters(filter);
-    console.log(res);
-    const charactersInfo = res.data;
-    setCharacters(charactersInfo.results ?? []);
+  if (results.isLoading) {
+    return <Loader />;
   }
+
+  console.log(results);
+  const characters = results.data?.data.results ?? [];
 
   return (
     <div className="filter-box m-10 grid gap-20 grid-cols-3">
@@ -48,7 +30,14 @@ const FilterBox = () => {
         onSubmit={(e) => {
           e.preventDefault();
           // Request characters on submit events
-          void requestCharacters();
+          // void requestCharacters();
+          const filter: IFilterObj = {};
+          if (name) filter.name = name;
+          if (status) filter.status = status;
+          if (species) filter.species = species;
+          if (type) filter.type = type;
+          if (gender) filter.gender = gender;
+          setFilter(filter);
         }}
       >
         <div className="grid gap-6 mb-6 md:grid-cols-1">
