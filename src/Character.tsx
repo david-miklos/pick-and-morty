@@ -1,4 +1,5 @@
 import { ICharacter } from "./interfaces";
+import Heart from "./assets/green-heart.png";
 
 const Character = (character: ICharacter) => {
   const { name, status, species, location, episode, url } = character;
@@ -45,6 +46,9 @@ const Character = (character: ICharacter) => {
           <h3 className="text-white ">{episode.length} episodes</h3>
         </section>
       </section>
+      <button className="flex flex-column items-end ml-auto mb-4 mr-5">
+        <img src={Heart} alt="green heart" className="w-7 h-7" />
+      </button>
     </article>
   );
 };
