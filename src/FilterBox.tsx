@@ -6,12 +6,8 @@ import Loader from "./Loader";
 import Results from "./Results";
 
 const FilterBox = () => {
-  // const [name, setName] = useState("");
-  // const [status, setStatus] = useState("" as Status);
-  // const [species, setSpecies] = useState("");
-  // const [type, setType] = useState("");
-  // const [gender, setGender] = useState("" as Gender);
   const [filter, setFilter] = useState({} as IFilterObj);
+  const [page, setPage] = useState(1);
 
   // React Query
   const results = useQuery(["search", filter], fetchCharacters);
@@ -20,10 +16,11 @@ const FilterBox = () => {
     return <Loader />;
   }
 
+  const maxPages = results.data?.data.info?.pages;
   const characters = results.data?.data.results ?? [];
 
   return (
-    <div className="filter-box m-10 grid gap-20 grid-cols-3">
+    <div className="filter-box m-10 grid gap-20 grid-cols-5">
       <form
         className="col-span-1"
         onSubmit={(e) => {
@@ -31,7 +28,7 @@ const FilterBox = () => {
           // Getting the data from the from
           const formData = new FormData(e.currentTarget);
           const filterObj = Object.fromEntries(formData.entries());
-
+          setPage(1);
           setFilter(filterObj);
         }}
       >
@@ -108,6 +105,45 @@ const FilterBox = () => {
         </div>
       </form>
       <Results results={characters} />
+
+      <div className="pagination flex flex-col items-center justify-center gap-5 col-span-5 mx-auto">
+        <div className="flex flex-col items-center">
+          <span className="text-sm text-gray-700 dark:text-gray-400">
+            Showing{" "}
+            <span className="font-semibold text-gray-900 dark:text-white">
+              {page}
+            </span>{" "}
+            of{" "}
+            <span className="font-semibold text-gray-900 dark:text-white">
+              {maxPages}
+            </span>{" "}
+            Pages
+          </span>
+
+          <div className="flex flex-row gap-5 mt-4 xs:mt-0">
+            <button
+              disabled={page === 1 ? true : false}
+              onClick={() => {
+                setPage(page - 1);
+                setFilter({ ...filter, ...{ page: page - 1 } });
+              }}
+              className="pagination-button rounded-l-lg"
+            >
+              Prev
+            </button>
+            <button
+              disabled={page === maxPages ? true : false}
+              onClick={() => {
+                setPage(page + 1);
+                setFilter({ ...filter, ...{ page: page + 1 } });
+              }}
+              className="pagination-button rounded-r-lg"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

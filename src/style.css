@@ -30,49 +30,12 @@
   .status-icon {
     @apply h-2 w-2 rounded-full mr-1.5;
   }
-  .foo {
-    @apply relative w-4 h-7  before:absolute before:w-4 before:h-7 before:rounded-tl-full before:rounded-tr-full before:rotate-45 before:bg-red-500 
-    after:absolute after:w-4 after:h-7 after:rounded-tl-full after:rounded-tr-full after:-rotate-45 after:bg-red-500 after:right-2;
-    /* after:w-5 after:h-5 after:rounded-full after:rotate-45 after:right-1 after:origin-top-right after:bg-blue-500; */
+  .pagination-button {
+    @apply px-4 py-2 text-sm font-medium text-white bg-gray-700  hover:bg-gray-800 disabled:opacity-50 disabled:pointer-events-none;
   }
-}
-
-.custom-right {
-  content: var(--tw-content);
-  right: 0.563rem /* 8px */;
 }
 
 ::selection {
   color: rgb(255, 152, 0);
   background: rgb(32, 35, 41);
-}
-
-.heart {
-  position: relative;
-  width: 100px;
-  height: 90px;
-  margin-top: 10px;
-}
-
-.heart::before,
-.heart::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 52px;
-  height: 80px;
-  border-radius: 50px 50px 0 0;
-  background: red;
-}
-
-.heart::before {
-  left: 50px;
-  transform: rotate(-45deg);
-  transform-origin: 0 100%;
-}
-
-.heart::after {
-  left: 0;
-  transform: rotate(45deg);
-  transform-origin: 100% 100%;
 }
