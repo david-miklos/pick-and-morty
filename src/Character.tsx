@@ -2,7 +2,6 @@ import { ICharacter } from "./interfaces";
 
 const Character = (character: ICharacter) => {
   const { name, status, species, location, episode, url } = character;
-  const alive = status === "Alive" ? true : false;
 
   return (
     <article className="character-card">
@@ -19,7 +18,13 @@ const Character = (character: ICharacter) => {
           </a>
           <h3 className="text-white font-medium flex flex-row items-center">
             <div
-              className={`status-icon ${alive ? "bg-green-500" : "bg-red-500"}`}
+              className={`status-icon ${
+                status === "Alive"
+                  ? "bg-green-500"
+                  : status === "Dead"
+                  ? "bg-red-500"
+                  : "bg-gray-400"
+              } `}
             ></div>
             {status} - {species}
           </h3>
