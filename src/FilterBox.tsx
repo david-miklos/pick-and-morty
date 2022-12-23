@@ -20,7 +20,7 @@ const FilterBox = () => {
   const characters = results.data?.data.results ?? [];
 
   return (
-    <div className="filter-box m-10 grid gap-20 grid-cols-5">
+    <div className="filter-box m-12 grid gap-20 grid-cols-5">
       <form
         className="col-span-1"
         onSubmit={(e) => {
