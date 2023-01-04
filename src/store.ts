@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import favouriteCharacters from "./favouriteCharacterSlice";
+import favouriteCharacters from "./slices/favouriteCharacterSlice";
 
 const store = configureStore({
   reducer: {

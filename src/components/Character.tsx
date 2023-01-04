@@ -1,14 +1,14 @@
-import { ICharacter } from "./interfaces";
-import Heart from "./assets/favorite-96.png";
-import Remove from "./assets/cancel-96.svg";
+import { ICharacter } from "../interfaces";
+import Heart from "../assets/favorite-96.png";
+import Remove from "../assets/cancel-96.svg";
 import { useDispatch } from "react-redux";
-import { add } from "./favouriteCharacterSlice";
-import { remove } from "./favouriteCharacterSlice";
+import { add } from "../slices/favouriteCharacterSlice";
+import { remove } from "../slices/favouriteCharacterSlice";
 import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
-import { RootState } from "./store";
+import { RootState } from "../store";
 const favouritesPath = "/favourites";
 
 const Character = (character: ICharacter) => {

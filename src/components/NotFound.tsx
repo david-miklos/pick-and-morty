@@ -1,6 +1,6 @@
 const NotFound = () => {
   return (
-    <div className="flex flex-col items-center col-span-2 my-auto">
+    <div className="flex flex-col items-center my-auto 2xl:col-span-4  xl:col-span-3  lg:col-span-2 sm:grid-cols-1">
       <div className="text-gray-500 font-bold text-7xl">404</div>
 
       <div className="font-bold text-lg xl:text-3xl lg:text-2xl md:text-xl mt-10">

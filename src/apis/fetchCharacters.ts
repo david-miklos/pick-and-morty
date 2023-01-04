@@ -1,7 +1,7 @@
 import { QueryFunction } from "@tanstack/react-query";
 import { getCharacters } from "rickmortyapi";
 import { ApiResponse, Character, Info } from "rickmortyapi/dist/interfaces";
-import { IFilterObj } from "./interfaces";
+import { IFilterObj } from "../interfaces";
 
 const fetchCharacters: QueryFunction<
   ApiResponse<Info<Character[]>>,

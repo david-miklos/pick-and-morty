@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import fetchCharacters from "./fetchCharacters";
-import { GENDERS, IFilterObj, STATUSES } from "./interfaces";
+import fetchCharacters from "../apis/fetchCharacters";
+import { GENDERS, IFilterObj, STATUSES } from "../interfaces";
 import Loader from "./Loader";
 import Results from "./Results";
 

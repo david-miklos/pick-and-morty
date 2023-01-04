@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ICharacter } from "./interfaces";
+import { ICharacter } from "../interfaces";
 
 export const favouriteCharactersSlice = createSlice({
   name: "favouriteCharacters",

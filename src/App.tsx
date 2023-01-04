@@ -1,7 +1,7 @@
-import FilterBox from "./FilterBox";
+import FilterBox from "./components/FilterBox";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./Header";
-import Favourites from "./Favourites";
+import Header from "./components/Header";
+import Favourites from "./components/Favourites";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider } from "react-redux";
 import store from "./store";
