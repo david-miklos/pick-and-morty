@@ -7,7 +7,7 @@ const Results = ({ results }: { results: ICharacter[] }) => {
     return <NotFound />;
   }
   return (
-    <div className="results col-span-4 grid gap-5 xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-1 h-1/2">
+    <div className="results grid gap-5 2xl:grid-cols-4 2xl:col-span-4 xl:grid-cols-3 xl:col-span-3 lg:grid-cols-2 lg:col-span-2 md:grid-cols-2 sm:grid-cols-1">
       {results.map((character) => {
         return <Character {...character} key={character.id} />;
       })}

@@ -42,7 +42,11 @@ const Character = (character: ICharacter) => {
 
   return (
     <article className="character-card w-full h-full">
-      <img className="card-image" src={character.image} alt="the character" />
+      <img
+        className="card-image w-2/5"
+        src={character.image}
+        alt="the character"
+      />
       <section className="card-content p-4 flex flex-col justify-around gap-y-6">
         <section>
           <a

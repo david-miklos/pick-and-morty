@@ -20,7 +20,7 @@ const FilterBox = () => {
   const characters = results.data?.data.results ?? [];
 
   return (
-    <div className="filter-box m-12 grid gap-20 grid-cols-5">
+    <div className="filter-box m-12 grid gap-20 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-1">
       <form
         className="col-span-1"
         onSubmit={(e) => {
@@ -32,7 +32,7 @@ const FilterBox = () => {
           setFilter(filterObj);
         }}
       >
-        <div className="grid gap-6 mb-6 md:grid-cols-1">
+        <div className="grid gap-6 mb-6 grid-cols-1">
           <div className="name">
             <label className="search-label" htmlFor="name">
               Name
@@ -106,7 +106,7 @@ const FilterBox = () => {
       </form>
       <Results results={characters} />
 
-      <div className="pagination flex flex-col items-center justify-center gap-5 col-span-5 mx-auto">
+      <div className="pagination flex flex-col items-center justify-center gap-5 col-span-full mx-auto">
         <div className="flex flex-col items-center">
           <span className="text-sm text-gray-700 dark:text-gray-400">
             Showing{" "}
