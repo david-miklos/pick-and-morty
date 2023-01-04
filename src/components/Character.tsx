@@ -41,23 +41,23 @@ const Character = (character: ICharacter) => {
   const dispatch = useDispatch();
 
   return (
-    <article className="character-card w-full h-full">
+    <article className="character-card h-full w-full">
       <img
         className="card-image w-2/5"
         src={character.image}
         alt="the character"
       />
-      <section className="card-content p-4 flex flex-col justify-around gap-y-6">
+      <section className="card-content flex flex-col justify-around gap-y-6 p-4">
         <section>
           <a
             href={url}
             target="_blank"
             rel="noreferrer"
-            className="text-white text-2xl font-extrabold hover:text-orange-400"
+            className="text-2xl font-extrabold text-white hover:text-orange-400"
           >
             {name}
           </a>
-          <h3 className="text-white font-medium flex flex-row items-center">
+          <h3 className="flex flex-row items-center font-medium text-white">
             <div
               className={`status-icon ${
                 status === "Alive"
@@ -71,7 +71,7 @@ const Character = (character: ICharacter) => {
           </h3>
         </section>
         <section>
-          <h3 className="text-neutral-400 font-medium">Location:</h3>
+          <h3 className="font-medium text-neutral-400">Location:</h3>
           <a
             href={location.url}
             target="_blank"
@@ -82,19 +82,19 @@ const Character = (character: ICharacter) => {
           </a>
         </section>
         <section>
-          <h3 className="text-neutral-400 font-medium">Seen in:</h3>
+          <h3 className="font-medium text-neutral-400">Seen in:</h3>
           <h3 className="text-white ">{episode.length} episodes</h3>
         </section>
       </section>
 
       <button
         onClick={handleCharacterAction}
-        className="flex flex-column items-end ml-auto mb-3 mr-4"
+        className="flex-column ml-auto mb-3 mr-4 flex items-end"
       >
         {pathname === favouritesPath ? (
-          <img src={Remove} alt="remove" className="w-8 h-8" />
+          <img src={Remove} alt="remove" className="h-8 w-8" />
         ) : (
-          <img src={Heart} alt="green heart" className="w-8 h-8" />
+          <img src={Heart} alt="green heart" className="h-8 w-8" />
         )}
       </button>
       <ToastContainer />

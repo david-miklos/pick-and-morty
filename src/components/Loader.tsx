@@ -1,10 +1,10 @@
 const Loader = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen p-5 bg-gray-100 min-w-screen">
-      <div className="flex space-x-2 animate-pulse">
-        <div className="w-3 h-3 bg-gray-600 rounded-full"></div>
-        <div className="w-3 h-3 bg-gray-600 rounded-full"></div>
-        <div className="w-3 h-3 bg-gray-600 rounded-full"></div>
+    <div className="min-w-screen flex min-h-screen items-center justify-center bg-gray-100 p-5">
+      <div className="flex animate-pulse space-x-2">
+        <div className="h-3 w-3 rounded-full bg-gray-600"></div>
+        <div className="h-3 w-3 rounded-full bg-gray-600"></div>
+        <div className="h-3 w-3 rounded-full bg-gray-600"></div>
       </div>
     </div>
   );

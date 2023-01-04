@@ -1,13 +1,13 @@
 const NotFound = () => {
   return (
-    <div className="flex flex-col items-center my-auto 2xl:col-span-4  xl:col-span-3  lg:col-span-2 sm:grid-cols-1">
-      <div className="text-gray-500 font-bold text-7xl">404</div>
+    <div className="my-auto flex flex-col items-center sm:grid-cols-1 lg:col-span-2  xl:col-span-3 2xl:col-span-4">
+      <div className="text-7xl font-bold text-gray-500">404</div>
 
-      <div className="font-bold text-lg xl:text-3xl lg:text-2xl md:text-xl mt-10">
+      <div className="mt-10 text-lg font-bold md:text-xl lg:text-2xl xl:text-3xl">
         No characters found
       </div>
 
-      <div className="text-gray-400 font-medium text-sm md:text-xl lg:text-2xl mt-8">
+      <div className="mt-8 text-sm font-medium text-gray-400 md:text-xl lg:text-2xl">
         Characters with the given filters do not exist
       </div>
     </div>

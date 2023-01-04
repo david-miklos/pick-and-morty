@@ -20,7 +20,7 @@ const FilterBox = () => {
   const characters = results.data?.data.results ?? [];
 
   return (
-    <div className="filter-box m-12 grid gap-20 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-1">
+    <div className="filter-box m-12 grid gap-20 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
       <form
         className="col-span-1"
         onSubmit={(e) => {
@@ -32,7 +32,7 @@ const FilterBox = () => {
           setFilter(filterObj);
         }}
       >
-        <div className="grid gap-6 mb-6 grid-cols-1 sticky top-10">
+        <div className="sticky top-10 mb-6 grid grid-cols-1 gap-6">
           <div className="name">
             <label className="search-label" htmlFor="name">
               Name
@@ -99,14 +99,14 @@ const FilterBox = () => {
               })}
             </select>
           </div>
-          <div className="flex flex-col items-center mt-5">
+          <div className="mt-5 flex flex-col items-center">
             <button className="submit-button w-1/3">Search</button>
           </div>
         </div>
       </form>
       <Results results={characters} />
 
-      <div className="pagination flex flex-col items-center justify-center gap-5 col-span-full mx-auto">
+      <div className="pagination col-span-full mx-auto flex flex-col items-center justify-center gap-5">
         <div className="flex flex-col items-center">
           <span className="text-sm text-gray-700 dark:text-gray-400">
             Showing{" "}
@@ -120,7 +120,7 @@ const FilterBox = () => {
             Pages
           </span>
 
-          <div className="flex flex-row gap-5 mt-4 xs:mt-0">
+          <div className="xs:mt-0 mt-4 flex flex-row gap-5">
             <button
               disabled={page === 1 ? true : false}
               onClick={() => {
