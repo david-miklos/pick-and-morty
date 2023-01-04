@@ -32,7 +32,7 @@ const FilterBox = () => {
           setFilter(filterObj);
         }}
       >
-        <div className="grid gap-6 mb-6 grid-cols-1">
+        <div className="grid gap-6 mb-6 grid-cols-1 sticky top-10">
           <div className="name">
             <label className="search-label" htmlFor="name">
               Name
