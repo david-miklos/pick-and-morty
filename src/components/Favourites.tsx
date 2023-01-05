@@ -21,7 +21,7 @@ const Favourites = () => {
         {favouriteCharacters.map((character) => {
           return (
             <li key={character.id}>
-              <Character {...character} />
+              <Character character={character} />
             </li>
           );
         })}

@@ -11,8 +11,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { RootState } from "../store";
 const favouritesPath = "/favourites";
 
-const Character = (character: ICharacter) => {
-  const { name, status, species, location, episode, url } = character;
+const Character = ({ character }: { character: ICharacter }) => {
+  const { name, status, species, location, episode, url, image } = character;
   const { pathname } = useLocation();
   const favouriteCharacters = useSelector(
     (state: RootState) => state.favouriteCharacters.value
@@ -42,11 +42,7 @@ const Character = (character: ICharacter) => {
 
   return (
     <article className="character-card h-full w-full">
-      <img
-        className="card-image w-2/5"
-        src={character.image}
-        alt="the character"
-      />
+      <img className="card-image w-2/5" src={image} alt="the character" />
       <section className="card-content flex flex-col justify-around gap-y-6 p-4">
         <section>
           <a
